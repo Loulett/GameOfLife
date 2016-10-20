@@ -1,14 +1,19 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <omp.h>
 
 int main() {
+	std::ifstream finp("input.txt");
 	int n = 0, ans = 0, i = 0, pred_ans = 0;
-	std::cin >> n;
+	double start = 0, finish = 0;
+	finp >> n;
 	std::vector<int> vec(n);
 	for (i = 0; i < n; i++) {
-		std::cin >> vec[i];
+		finp >> vec[i];
 	}
+	finp.close();
+	start = omp_get_wtime();
 #pragma omp parallel shared(vec, ans, n) private(i) firstprivate(pred_ans)
 	{
 #pragma omp for
@@ -19,6 +24,8 @@ int main() {
 #pragma omp atomic
 			ans += pred_ans;
 	}
-	std::cout << ans;
+	finish = omp_get_wtime();
+	std::cout << ans << '\n';
+	std::cout << finish - start;
 	return 0;
 }
