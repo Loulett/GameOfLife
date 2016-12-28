@@ -1,0 +1,10 @@
+time with 2 threads = 0.387072
+time with 4 threads = 0.338599
+time with 6 threads = 0.358784
+time with 8 threads = 0.318971
+time with 10 threads = 0.44238
+time with 12 threads = 0.537832
+time with 14 threads = 0.378264
+time with 16 threads = 0.415279
+time with 18 threads = 1.30206
+time with 20 threads = 1.51377
